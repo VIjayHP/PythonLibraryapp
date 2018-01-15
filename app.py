@@ -1,9 +1,12 @@
-from flask import Flask, render_template, json, request
+from flask import Flask, render_template, json, flash, request
 from flask.ext.mysql import MySQL
 from werkzeug import generate_password_hash, check_password_hash
+from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
 mysql = MySQL()
 app = Flask(__name__)
+class BooksData(Form):
+    name = TextField('Name:', validators=[validators.required()])
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'jay'
@@ -53,6 +56,21 @@ def signUp():
     finally:
         cursor.close() 
         conn.close()
+@app.route("/", methods=['GET', 'POST'])
+def hello():
+    form = BooksData(request.form)
+    print form.errors
+    if request.method == 'POST':
+        Bookname=request.form['name']
+        print Bookname
+        Authorname=request.form['name']
+        print Authorname
+        if form.validate():
+            # Save the comment here.
+            flash('Hello')
+        else:
+            flash('All the form fields are required. ')
+            return render_template('hello.html', form=form)
 
 if __name__ == "__main__":
     app.run(port=5002)

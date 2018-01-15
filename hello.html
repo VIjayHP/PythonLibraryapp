@@ -1,0 +1,28 @@
+CTYPE>
+<html>
+	    <head>
+		            <title>Store Books</title>
+			        </head>
+				    <body>
+					            {% with messages = get_flashed_messages(with_categories=true) %}
+						                {% if messages %}
+								                        <li>{{ message[1] }}</li>
+											            {% endif %}
+												            {% endwith %}
+													            <form action="" method="post">
+															                {{ form.csrf }}
+																	 
+																	            <div class="input text">
+																			                    {{ form.Authorname.label }} {{ form.Authorname }}
+																					                </div>
+																										<div class="input text">
+																											                {{ form.Bookname.label }} {{ form.Bookname }}
+																													            </div>
+																														     
+																														                <div class="input submit">
+																																	                <input type="submit" value="Submit" />
+																																			            </div>
+																																				            </form>
+																																					        </body>
+</html>
+
