@@ -1,0 +1,1 @@
+This Application is Library monitoring application. We are using Python Framework Flask and mysql database to monitor the list of Books stored by the particular user. Before running the python application (app.py) install flask by "pip install flask", nginx web server to host the applications and view in browser if in case Linux server is used.
